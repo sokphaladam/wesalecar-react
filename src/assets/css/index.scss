@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@import './App.css';
+@import './bootstrap.min.css';
+@import './owl.css';
+@import './jquery.fancybox.min.css';
+@import './layerslider.css';
+@import './template.css';
+@import './jslider.css';
+@import './bootstrap-select.min.css';
+@import './style.css';
+@import './color/color-one.css';
+@import '../fontawesome-free-5.14.0-web/scss/fontawesome.scss';
+@import '../fontawesome-free-5.14.0-web/scss/regular.scss';
+@import '../fontawesome-free-5.14.0-web/scss/solid.scss';
+@import '../fontawesome-free-5.14.0-web/scss/brands.scss';

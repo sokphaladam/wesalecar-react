@@ -1,7 +1,57 @@
 import React from "react";
 import { Content } from "../components/Content";
+import { useFirebase } from "react-redux-firebase";
+import { useHistory } from "react-router-dom";
+
+type dataInputType = {
+  name: HTMLInputElement | null;
+  email: HTMLInputElement | null;
+  password: HTMLInputElement | null;
+  repassword: HTMLInputElement | null;
+}
 
 export function RegisterScreen() {
+  let data: dataInputType = {
+    name: null,
+    email: null,
+    password: null,
+    repassword: null
+  };
+  const firebase = useFirebase();
+  const history = useHistory();
+
+
+  const handleRegister = async (e: any) => {
+    e.preventDefault();
+    try {
+      if(data.password!.value !== data.repassword!.value) {
+        return alert('password not the same!');
+      }else {
+        await firebase.createUser(
+          {
+            email: data.email!.value,
+            password: data.password!.value,
+          }, 
+          {
+            username: data.name!.value,
+            email: data.email!.value
+          }
+        )
+        const login = await firebase.login({
+          email: data.email!.value,
+          password: data.password!.value,
+        });
+        await firebase.auth().currentUser!.updateProfile({
+          displayName: data.name!.value
+        });
+        sessionStorage.setItem("user", JSON.stringify(login.user));
+        history.push("/");
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
   return (
     <Content>
       <div className="row">
@@ -35,15 +85,15 @@ export function RegisterScreen() {
         <div className="col-lg-5">
           <h3 className="mb-4 down-line">Registration</h3>
           <div className="form-icon-left form-boder">
-            <form action="#" method="post">
+            <form onSubmit={handleRegister}>
               <div className="form-row">
                 <div className="col-md-12">
                   <label>Your Name</label>
                   <input
                     type="text"
                     className="form-control bg-light"
-                    value=""
                     required
+                    ref={ref => data.name = ref}
                   />
                 </div>
                 <div className="col-md-12">
@@ -51,8 +101,8 @@ export function RegisterScreen() {
                   <input
                     type="email"
                     className="form-control bg-light"
-                    value=""
                     required
+                    ref={ref => data.email = ref}
                   />
                 </div>
                 <div className="col-md-12">
@@ -60,8 +110,8 @@ export function RegisterScreen() {
                   <input
                     type="password"
                     className="form-control bg-light"
-                    value=""
                     required
+                    ref={ref => data.password = ref}
                   />
                 </div>
                 <div className="col-md-12">
@@ -69,28 +119,14 @@ export function RegisterScreen() {
                   <input
                     type="password"
                     className="form-control bg-light"
-                    value=""
                     required
+                    ref={ref => data.repassword = ref}
                   />
-                </div>
-                <div className="col-md-12 form-check mb-4">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="checkbox1"
-                  />
-                  <label>Accept Terms and Conditions</label>
                 </div>
                 <div className="col-md-12 form-check">
-                  <button type="button" className="btn btn-primary mb-3">
+                  <button type="submit" className="btn btn-primary mb-3">
                     Sign Up Now
                   </button>
-                </div>
-                <div className="col-md-12">
-                  <a href="#" className="btn-link text-dark">
-                    View Terms and Condition
-                  </a>
                 </div>
               </div>
             </form>

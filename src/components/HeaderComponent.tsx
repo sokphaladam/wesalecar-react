@@ -57,6 +57,9 @@ export function HeaderComponent(){
                     <li className="nav-item dropdown">
 											<Link to="#" className="nav-link" href="contact.html">Contact+</Link>
 										</li>
+                    <li className="nav-item dropdown">
+											<Link to="#" className="nav-link" href="contact.html">Account+</Link>
+										</li>
                   </ul>
                   <ul className="navbar-nav ml-auto mr-100 d-1350-none">
 										<li className="nav-item">

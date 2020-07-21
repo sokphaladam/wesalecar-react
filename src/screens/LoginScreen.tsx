@@ -31,6 +31,19 @@ export function LoginScreen() {
     }
   };
 
+  const handleSignInFacebook = async () => {
+    try {
+      const login = await firebase.login({
+        provider: 'facebook',
+        type: 'popup'
+      });
+      sessionStorage.setItem('user', JSON.stringify(login.user));
+      history.push('/');
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
   return (
     <Content>
       <div className="row">
@@ -83,7 +96,7 @@ export function LoginScreen() {
                 <br/>
                 <br/>
                 <div className="col-md-12">
-                  <Link to="#" className="btn-link text-dark">
+                  <Link to="/register" className="btn-link text-dark">
                     {" "}
                     Don't have any account? Register or
                   </Link>
@@ -97,6 +110,7 @@ export function LoginScreen() {
                     style={{
                       backgroundColor: '#3b5998'
                     }}
+                    onClick={handleSignInFacebook}
                   >
                     {" "}
                     Sing in with facebook

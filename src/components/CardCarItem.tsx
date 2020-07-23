@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
   data: any;
@@ -30,12 +31,12 @@ export function CardCarItem(props: Props) {
             {props.data.type}
           </span>
           <h5 className="mb-2">
-            <a
-              href="#"
+            <Link
+              to={'/shop/'+props.data.id}
               className="text-secondary hover-text-primary transation"
             >
               {props.data.title}
-            </a>
+            </Link>
           </h5>
           <div className="d-flex justify-content-between align-items-center">
             <div className="price">
@@ -44,10 +45,10 @@ export function CardCarItem(props: Props) {
               </span>
             </div>
             <div className="review float-right font-12">
-              <span>
+              {/* <span>
                 ({props.data.rating === undefined ? 0 : props.data.rating}{" "}
                 Rating)
-              </span>
+              </span> */}
               {/* <span className="ml-2 bg-primary py-1 px-2 text-white">
                 4.50/5
               </span> */}

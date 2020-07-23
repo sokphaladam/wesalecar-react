@@ -39,7 +39,8 @@ export function HeaderComponent(){
             <div className="col-md-12">
               <nav className="navbar navbar-expand-lg nav-white nav-primary-hover nav-down-line-active">
                 <a className="navbar-brand" href="#">
-                  <img className="nav-logo" src={require('../assets/images/logo/1.png')} alt="Image not found !"/>
+                  {/* <img className="nav-logo" src={require('../assets/images/logo/1.png')} alt="Image not found !"/> */}
+                  <h4 className="nav-logo text-danger">WESALECAR</h4>
                 </a>
 								<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 								  <span className="navbar-toggler-icon flaticon-menu flat-small text-white">
@@ -51,7 +52,7 @@ export function HeaderComponent(){
                     <li className="nav-item dropdown">
 											<Link to="/" className="nav-link" href="contact.html">Shop+</Link>
 										</li>
-                    <li className="nav-item dropdown">
+                    {/* <li className="nav-item dropdown">
 											<Link to="#" className="nav-link" href="contact.html">About+</Link>
 										</li>
                     <li className="nav-item dropdown">
@@ -59,14 +60,14 @@ export function HeaderComponent(){
 										</li>
                     <li className="nav-item dropdown">
 											<Link to="#" className="nav-link" href="contact.html">Account+</Link>
-										</li>
+										</li> */}
                   </ul>
                   <ul className="navbar-nav ml-auto mr-100 d-1350-none">
 										<li className="nav-item">
 											<Link to="#" className="nav-link" href="#">+1 828-376-0532</Link>
 										</li>
 										<li className="nav-item">
-											<Link to="#" className="nav-link" href="#">carhut@support.com</Link>
+											<Link to="#" className="nav-link" href="#">sample@support.com</Link>
 										</li>
 									</ul>
                   <Link 

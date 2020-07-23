@@ -19,6 +19,7 @@ type Filter = {
 
 type Props = {
   handleSearch: (e: any) => void;
+  handleSearchTitle: (e: any) => void;
 }
 
 export function ShopFilter(props: Props) {
@@ -28,6 +29,7 @@ export function ShopFilter(props: Props) {
   let tranmission_tag: HTMLSelectElement | null = null;
   let con_tag: HTMLSelectElement | null = null;
   let year_tag: HTMLSelectElement | null = null;
+  let search_tag: HTMLInputElement | null = null;
   const firebase = useFirebase();
   const [makes, setMake] = useState([]);
   const [models, setModel] = useState([]);
@@ -98,15 +100,21 @@ export function ShopFilter(props: Props) {
     props.handleSearch(filer);
   }
 
+  const handleSearchTitle = (e: any) => {
+    e.preventDefault();
+    props.handleSearchTitle(search_tag?.value);
+  }
+
   return (
     <div className="sidebar-widget bg-light p-30" id="sidebar">
       <div className="widget search-widget mb">
-        <form>
+        <form onSubmit={handleSearchTitle}>
           <input
             type="text"
             className="form-control bg-white"
             name="search"
             placeholder="Search"
+            ref={ref => search_tag = ref}
           />
           <button type="submit" name="submit">
             <i className="fas fa-search"></i>

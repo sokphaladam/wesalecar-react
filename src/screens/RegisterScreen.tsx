@@ -34,7 +34,9 @@ export function RegisterScreen() {
           }, 
           {
             username: data.name!.value,
-            email: data.email!.value
+            email: data.email!.value,
+            role: 'guest',
+            providerId: 'password'
           }
         )
         const login = await firebase.login({

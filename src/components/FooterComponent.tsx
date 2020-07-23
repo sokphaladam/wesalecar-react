@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export function FooterComponent(){
   return(
@@ -19,11 +21,11 @@ export function FooterComponent(){
 								<h3 className="widget-title mb-4">Over 10000 Customers Already Connected</h3>
 								<p>Libero consectetuer fames montes habitasse lorem hendrerit dictumst sit blandit. Commodo justo. Blandit lobortis metus et. Dignissim netus netus convallis hendrerit. Molestie penatibus litora cubilia etiam.</p>
 								<div className="footer-widget media-widget mt-5">
-									<a href="#"><i className="fab fa-facebook-f"></i></a>
-									<a href="#"><i className="fab fa-twitter"></i></a>
-									<a href="#"><i className="fab fa-linkedin-in"></i></a>
-									<a href="#"><i className="fab fa-google-plus-g"></i></a>
-									<a href="#"><i className="fab fa-pinterest-p"></i></a>
+									<Link to="#"><i className="fab fa-facebook-f"></i></Link>
+									<Link to="#"><i className="fab fa-twitter"></i></Link>
+									<Link to="#"><i className="fab fa-linkedin-in"></i></Link>
+									<Link to="#"><i className="fab fa-google-plus-g"></i></Link>
+									<Link to="#"><i className="fab fa-pinterest-p"></i></Link>
 								</div>
 							</div>
 						</div>
@@ -33,17 +35,17 @@ export function FooterComponent(){
 									<div className="footer-widget footer-nav mb-5">
 										<h4 className="widget-title mb-4">Learn More</h4>
 										<ul>
-											<li><a href="#">Privacy statement</a></li>
-											<li><a href="#">Modern slavery statement</a></li>
-											<li><a href="#">Perrys past & present</a></li>
+											<li><Link to="#">Privacy statement</Link></li>
+											<li><Link to="#">Modern slavery statement</Link></li>
+											<li><Link to="#">Perrys past & present</Link></li>
 										</ul>
 									</div>
 									<div className="footer-widget footer-nav mb-5">
 										<h4 className="widget-title mb-4">About Special Service</h4>
 										<ul>
-											<li><a href="#">Power Steering</a></li>
-											<li><a href="#">Engine Overhaul</a></li>
-											<li><a href="#">Tyre Balancing</a></li>
+											<li><Link to="#">Power Steering</Link></li>
+											<li><Link to="#">Engine Overhaul</Link></li>
+											<li><Link to="#">Tyre Balancing</Link></li>
 										</ul>
 									</div>
 								</div>

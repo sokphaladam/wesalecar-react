@@ -38,6 +38,12 @@ export function LoginScreen() {
         type: 'popup'
       });
       sessionStorage.setItem('user', JSON.stringify(login.user));
+      firebase.firestore().collection('users').doc().set({
+        username: login.user?.displayName,
+        email: login.user?.email,
+        role: 'guest',
+        providerId: login.user?.providerId
+      })
       history.push('/');
     } catch (error) {
       alert(error.message);

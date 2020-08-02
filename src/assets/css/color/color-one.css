@@ -13,7 +13,7 @@ Theme Color All Codes Variable
 }
 
 :root {
-    --theme-secondary-color: #052046;
+    --theme-secondary-color: #83b735;
     /* theme secondary color ok*/
 }
 
@@ -90,7 +90,7 @@ Font Variable
 }
 
 :root {
-    --theme-highlight-font: 'Odibee Sans', cursive;
+    --theme-highlight-font: Hanuman,Arial,Helvetica,sans-serif;
     /* Font used in title or special area ok*/
 }
 

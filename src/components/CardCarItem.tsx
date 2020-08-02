@@ -32,8 +32,11 @@ export function CardCarItem(props: Props) {
           </span>
           <h5 className="mb-2">
             <Link
-              to={'/shop/'+props.data.id}
-              className="text-secondary hover-text-primary transation"
+              to={'/shop/' + props.data.id}
+              className="hover-text-success transation"
+              style={{
+                color: '#333'
+              }}
             >
               {props.data.title}
             </Link>

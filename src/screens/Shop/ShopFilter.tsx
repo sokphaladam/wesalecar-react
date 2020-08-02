@@ -6,13 +6,13 @@ type Filter = {
   models: string | "ALL";
   year: number | 0;
   fuel:
-    | "ELECTRIC"
-    | "DIESEL"
-    | "PETROL"
-    | "HYBRID"
-    | "PETROL+CNG"
-    | "PETROL+LPG"
-    | "ALL"|string;
+  | "ELECTRIC"
+  | "DIESEL"
+  | "PETROL"
+  | "HYBRID"
+  | "PETROL+CNG"
+  | "PETROL+LPG"
+  | "ALL" | string;
   transmission: "AMT" | "AUTO" | "MANUAL" | "ALL" | string;
   type: "ALL" | "NEW" | "USED" | "PRE-OWNED" | string;
 };
@@ -73,7 +73,7 @@ export function ShopFilter(props: Props) {
   }
 
   useEffect(() => {
-    if(load){
+    if (load) {
       getMakes();
       getYears();
       setLoad(false);
@@ -81,7 +81,7 @@ export function ShopFilter(props: Props) {
   })
 
   const handleMakeChange = async () => {
-    if(make_tag?.value !== 'ALL'){
+    if (make_tag?.value !== 'ALL') {
       getModels(make_tag!.value!)
     }
   }
@@ -127,7 +127,7 @@ export function ShopFilter(props: Props) {
           <div className="row">
             <div className="col-md-12">
               <div className="form-group">
-                <select 
+                <select
                   className="form-control bg-white"
                   ref={ref => make_tag = ref}
                   onChange={handleMakeChange}
@@ -201,7 +201,7 @@ export function ShopFilter(props: Props) {
             </div>
             <div className="col-md-12">
               <div className="form-group mt-4">
-                <button type="submit" className="btn btn-primary w-100">
+                <button type="submit" className="btn btn-success w-100">
                   Search Property
                 </button>
               </div>

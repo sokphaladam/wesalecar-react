@@ -2,18 +2,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export function FooterComponent(){
-  return(
-    <footer 
-      className="full-row p-0 overlay-secondary text-white footer-two" 
-      style={{
-        backgroundImage: `url(${require('../assets/images/background/14.png')})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'        
-      }}
-    >
-			<div className="full-row">
+export function FooterComponent() {
+	return (
+		<footer
+			className="full-row p-0 overlay-secondary text-white footer-two"
+			style={{
+				backgroundImage: `url(${require('../assets/images/background/14.png')})`,
+				backgroundRepeat: 'no-repeat',
+				backgroundSize: 'cover',
+				backgroundPosition: 'center'
+			}}
+		>
+			<div className="full-row" style={{ backgroundColor: 'rgba(131, 183, 53, 0.4)' }}>
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-4 col-sm-12">
@@ -86,30 +86,29 @@ export function FooterComponent(){
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div className="copyright text-white pt-5">
-				<div className="container py-4">
-					<div className="row">
-						<div className="col-lg-6">
-							<span>Copyright © 2020 Carhut All right reserved</span>
-						</div>
-						<div className="col-lg-6">
-							<ul className="line-menu float-right list-color-gray">
-								<li><a href="#">Advertise</a></li>
-								<li>|</li>
-								<li><a href="#">Questions</a></li>
-								<li>|</li>
-								<li><a href="#">Disclaimer</a></li>
-								<li>|</li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li>|</li>
-								<li><a href="#">Site Map</a></li>
-							</ul>
+				<div className="copyright text-white pt-5">
+					<div className="container py-4">
+						<div className="row">
+							<div className="col-lg-6">
+								<span>Copyright © 2020 Carhut All right reserved</span>
+							</div>
+							<div className="col-lg-6">
+								<ul className="line-menu float-right list-color-gray">
+									<li><a href="#">Advertise</a></li>
+									<li>|</li>
+									<li><a href="#">Questions</a></li>
+									<li>|</li>
+									<li><a href="#">Disclaimer</a></li>
+									<li>|</li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li>|</li>
+									<li><a href="#">Site Map</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</footer>
-  )
+	)
 }

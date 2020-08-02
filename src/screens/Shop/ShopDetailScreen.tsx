@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Content } from '../../components/Content';
 import { useFirebase } from 'react-redux-firebase';
 import { useRouteMatch, Link } from 'react-router-dom';
+import { ShopBooking } from './components/ShopBooking';
 
 export function ShopDetailScreen() {
   const firebase = useFirebase();
@@ -12,6 +13,8 @@ export function ShopDetailScreen() {
   const [load, isLoad] = useState(true);
   const [index, setIndex] = useState(0);
   const [indexTab, setIndexTab] = useState(0);
+  const [model, setModel] = useState(false);
+  const user = sessionStorage.getItem('user');
 
   const getData = async () => {
     const params: any = match.params;
@@ -30,12 +33,20 @@ export function ShopDetailScreen() {
   useEffect(() => {
     if (load) {
       getData();
-      isLoad(false)
+      isLoad(false);
     }
-  }, [getData, load])
+  }, [getData, load]);
+
+  const handleBooking = () => {
+    console.log(user)
+    setModel(true);
+  }
 
   return (
     <Content>
+      {
+        model && <ShopBooking onShowChange={v => setModel(v)} value={car} />
+      }
       <div className="row">
         <div className="col-xl-12">
           <div className="inventory-title mb-2">
@@ -54,7 +65,7 @@ export function ShopDetailScreen() {
             <div className="pricing d-flex justify-content-between">
               <div className="price py-1"><span className="h5 text-success">${new Intl.NumberFormat().format(Number(car.price))}</span></div>
               <div className="float-right">
-                <a href="#" className="border px-3 py-1 font-mini text-dark"><i className="fas fa-calendar-alt"></i> Book Now</a>
+                {user !== null && <a href="#" className="border px-3 py-1 font-mini text-dark" onClick={handleBooking}><i className="fas fa-calendar-alt"></i> Book Now</a>}
                 {/* <a href="#" className="border px-3 py-1 font-mini text-dark"><i className="fas fa-dollar-sign"></i> Make An Offer</a>
                 <a href="#" className="border px-3 py-1 font-mini text-dark"><i className="fas fa-print"></i> Print</a> */}
               </div>
@@ -136,13 +147,13 @@ export function ShopDetailScreen() {
           <div className="tab-two" style={{ marginTop: 180 }}>
             <ul className="nav nav-tabs wc-tabs" id="myTab" role="tablist">
               <li className="nav-item">
-                <Link className="nav-link active" id="overview-tab" data-toggle="tab" to="#" role="tab" aria-controls="overview" aria-selected="true" onClick={() => setIndexTab(0)}>Overview</Link>
+                <Link className={`nav-link ${indexTab === 0 ? 'active' : ''}`} id="overview-tab" data-toggle="tab" to="#" role="tab" aria-controls="overview" aria-selected="true" onClick={() => setIndexTab(0)}>Overview</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" id="features-tab" data-toggle="tab" to="#" role="tab" aria-controls="features" aria-selected="false" onClick={() => setIndexTab(1)}>Features & Option</Link>
+                <Link className={`nav-link ${indexTab === 1 ? 'active' : ''}`} id="features-tab" data-toggle="tab" to="#" role="tab" aria-controls="features" aria-selected="false" onClick={() => setIndexTab(1)}>Features & Option</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" id="vehicle-tab" data-toggle="tab" to="#" role="tab" aria-controls="vehicle" aria-selected="false" onClick={() => setIndexTab(2)}>Vehicle Information</Link>
+                <Link className={`nav-link ${indexTab === 2 ? 'active' : ''}`} id="vehicle-tab" data-toggle="tab" to="#" role="tab" aria-controls="vehicle" aria-selected="false" onClick={() => setIndexTab(2)}>Vehicle Information</Link>
               </li>
             </ul>
             <div className="tab-content p-4 border border-top-0" id="myTabContent">

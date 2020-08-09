@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
 import { HeaderComponent } from "./components/HeaderComponent";
-import { BannerComponent } from "./components/BannerComponent";
-import { Breadcrumb } from "./components/Breadcrumb";
-import { FooterComponent } from "./components/FooterComponent";
 import { useFirebase } from "react-redux-firebase";
 import { BrowserRouter } from "react-router-dom";
 import { RouteIndex } from "./routes";
@@ -26,12 +23,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="page-wrapper">
+      <div className="page-wrapper ui mini">
         <HeaderComponent />
-        <BannerComponent />
-        <Breadcrumb />
         <RouteIndex />
-        <FooterComponent />
       </div>
     </BrowserRouter>
   );

@@ -4,6 +4,7 @@ import { Content } from "../../components/Content";
 import { ShopFilter } from "./ShopFilter";
 import { useFirebase, ExtendedFirestoreInstance } from "react-redux-firebase";
 import { CardCarItem } from "../../components/CardCarItem";
+import { CardCarItem2 } from "../../components/CardCarItem2";
 
 type Filter = {
   makes: string | "ALL";
@@ -80,11 +81,11 @@ function ShopScreen() {
         <div className="col-xl-8 col-lg-9">
           <div className="row">
             <div className="col-md-12">
-              <div className="woo-filter-bar d-table w-100 mb-4 sm-mt-30">
-                <div className="float-left">
-                  <div className="woocommerce-ordering">
+              <div className="woo-filter-bar d-table w-100 sm-mt-30" style={{ margin: 0 }}>
+                <div className="float-left ui mini form">
+                  <div className="field">
                     <select 
-                      className="form-control orderby" 
+                      className="ui selection dropdown " 
                       value={select}
                       onChange={e =>{
                         setSelect(e.target.value);
@@ -100,18 +101,21 @@ function ShopScreen() {
                     </select>
                   </div>
                 </div>
-                <div className="float-left">
+                <div className="float-right">
                   <span className="woocommerce-ordering-pages">
                     Showing at 15 result
                   </span>
                 </div>
               </div>
             </div>
+            <div className="col-md-12">
+              <div className="ui divider"></div>
+            </div>
             {
               data.map((x: any) => {
                 return(
                   <div className="col-md-12" key={x.id}>
-                    <CardCarItem data={x}/>
+                    <CardCarItem2 data={x}/>
                   </div>
                 )
               })

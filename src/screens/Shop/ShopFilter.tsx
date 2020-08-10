@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { useFirebase } from "react-redux-firebase";
 
@@ -78,7 +79,7 @@ export function ShopFilter(props: Props) {
       getYears();
       setLoad(false);
     }
-  })
+  }, [load, getMakes, getYears])
 
   const handleMakeChange = async () => {
     if (make_tag?.value !== 'ALL') {

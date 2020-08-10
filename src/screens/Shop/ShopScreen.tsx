@@ -3,7 +3,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Content } from "../../components/Content";
 import { ShopFilter } from "./ShopFilter";
 import { useFirebase, ExtendedFirestoreInstance } from "react-redux-firebase";
-import { CardCarItem } from "../../components/CardCarItem";
 import { CardCarItem2 } from "../../components/CardCarItem2";
 
 type Filter = {

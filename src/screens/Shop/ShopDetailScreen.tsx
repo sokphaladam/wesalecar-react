@@ -7,6 +7,7 @@ import { useRouteMatch, Link } from 'react-router-dom';
 import { ShopBooking } from './components/ShopBooking';
 import { Slider } from './components/Silder';
 import { CardPanel } from './components/CardPanel';
+import { VehicleInfo } from './components/VehicleInfo';
 
 export function ShopDetailScreen() {
   const firebase = useFirebase();
@@ -46,7 +47,7 @@ export function ShopDetailScreen() {
   return (
     <Content>
       <div className="row">
-        <div className="col-xl-8 col-lg-9 order-2 order-lg-1 ls-direction-fix">
+        <div className="col-xl-8 col-lg-9">
 
           <div className="border-bottom mb-2">
             <div className="d-flex justify-content-between align-items-center pb-2">
@@ -54,9 +55,13 @@ export function ShopDetailScreen() {
             </div>
           </div>
 
-          {car.image !== undefined && <Slider images={car.image} />}
+          <div style={{ height: 600, maxHeight: 600, position: 'relative', }}>
+            {car.image !== undefined && <Slider images={car.image} />}
+          </div>
+          
+          <br/>
 
-          <div className="row" style={{ marginTop: 180 }}>
+          <div className="row" style={{ marginTop: 10 }}>
             <div className="col-12">
               <div className="card">
                 <div className="card-body">
@@ -125,9 +130,7 @@ export function ShopDetailScreen() {
 
       <div className="row">
         <div className="col-6">
-          <CardPanel title="Vechicle Information">
-
-          </CardPanel>
+          <VehicleInfo car={car}/>
           <br/>
           <CardPanel title="Glass And Outside Mirrors">
 

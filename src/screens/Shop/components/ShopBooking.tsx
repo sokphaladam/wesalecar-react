@@ -24,7 +24,7 @@ export function ShopBooking(props: Props) {
         id: props.value.id,
         title: props.value.title,
         price: props.value.price,
-        image: props.value.image[0]
+        image: props.value.images[0]
       }
     });
 

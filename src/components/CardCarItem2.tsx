@@ -6,11 +6,12 @@ interface Props {
 }
 
 export function CardCarItem2(props: Props) {
+  const images = props.data.image === undefined ? props.data.images : props.data.image;
   return (
     <Link to={'/shop/' + props.data.id} className="card-wesalecar">
       <div className="row">
         <div className="col-3">
-          <img src={props.data.image[0]} alt="" style={{ height: 'auto', width: 195, objectFit: 'cover' }} />
+          <img src={images[0]} alt="" style={{ height: 'auto', width: 195, objectFit: 'cover' }} />
         </div>
         <div className="col-9">
           <div className="row">
@@ -27,36 +28,36 @@ export function CardCarItem2(props: Props) {
               <div className="row">
                 <div className="col-6">
                   <small className="text-mute">
-                    Service History: <small className="text-info">No Service History</small>
+  Service History: <small className="text-info">{props.data.service_history}</small>
                   </small>
                 </div>
                 <div className="col-6">
                   <small className="text-mute">
-                    Specs: <small className="text-info">CGG</small>
-                  </small>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-6">
-                  <small className="text-mute">
-                    Mileage: <small className="text-info">No Service</small>
-                  </small>
-                </div>
-                <div className="col-6">
-                  <small className="text-mute">
-                    Color: <small className="text-info">{props.data.colors}</small>
+                    Specs: <small className="text-info">{props.data.specs}</small>
                   </small>
                 </div>
               </div>
               <div className="row">
                 <div className="col-6">
                   <small className="text-mute">
-                    Transimission: <small className="text-info">{props.data.transmission_type}</small>
+                    Mileage: <small className="text-info">{props.data.odometer_reading} Km</small>
+                  </small>
+                </div>
+                <div className="col-6"  >
+                  <small className="text-mute">
+                    Color: <small className="text-info">{props.data.colors} {props.data.car_color}</small>
+                  </small>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-6">
+                  <small className="text-mute">
+                    Transimission: <small className="text-info">{props.data.transmission}</small>
                   </small>
                 </div>
                 <div className="col-6">
                   <small className="text-mute">
-                    Engine: <small className="text-info">{props.data.engine}</small>
+                    Engine: <small className="text-info">{props.data.engine_size}</small>
                   </small>
                 </div>
               </div>

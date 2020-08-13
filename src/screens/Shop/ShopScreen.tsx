@@ -19,6 +19,10 @@ type Filter = {
     | "ALL";
   transmission: "AMT" | "AUTO" | "MANUAL" | "ALL";
   type: "ALL" | "NEW" | "USED" | "PRE-OWNED";
+  price: {
+    min: number | 0;
+    max: number | 0;
+  }
 };
 
 function ShopScreen() {
@@ -33,6 +37,10 @@ function ShopScreen() {
     transmission: "ALL",
     type: "ALL",
     year: 0,
+    price: {
+      min: 0,
+      max: 0
+    }
   });
 
   const loadData = useCallback(async (filer: Filter, select: string) => {
@@ -49,6 +57,10 @@ function ShopScreen() {
         transmission: "ALL",
         type: "ALL",
         year: 0,
+        price: {
+          min: 0,
+          max: 0
+        }
       }, select);
       setLoad(false)
     }
@@ -74,17 +86,17 @@ function ShopScreen() {
   return (
     <Content>
       <div className="row">
-        <div className="col-xl-4 col-lg-3">
+        <div className="col-xl-3 col-lg-3">
           <ShopFilter handleSearch={handleSearch} handleSearchTitle={handleSearchTitle}/>
         </div>
-        <div className="col-xl-8 col-lg-9">
+        <div className="col-xl-9 col-lg-10">
           <div className="row">
             <div className="col-md-12">
               <div className="woo-filter-bar d-table w-100 sm-mt-30" style={{ margin: 0 }}>
                 <div className="float-left ui mini form">
                   <div className="field">
                     <select 
-                      className="ui selection dropdown " 
+                      className="ui selection dropdown" 
                       value={select}
                       onChange={e =>{
                         setSelect(e.target.value);
@@ -102,7 +114,6 @@ function ShopScreen() {
                 </div>
                 <div className="float-right">
                   <span className="woocommerce-ordering-pages">
-                    Showing at 15 result
                   </span>
                 </div>
               </div>
@@ -132,26 +143,8 @@ export default ShopScreen;
 async function getCarList(filer: Filter, order: string, firestore: ExtendedFirestoreInstance){
   const items: any = [];
     let snapCollection = firestore.collection("cars").where("published", "==", true);
-
-    if(order === 'default') {
-      snapCollection = snapCollection.orderBy('title', 'asc');
-    }
-    
-    if(order === 'most') {
-      snapCollection = snapCollection.orderBy('click', 'desc');
-    }
-
-    if(order === 'new') {
-      snapCollection = snapCollection.orderBy('created', 'desc');
-    }
-
-    if(order === 'low') {
-      snapCollection = snapCollection.orderBy('price', 'asc');
-    }
-
-    if(order === 'hight') {
-      snapCollection = snapCollection.orderBy('price', 'desc');
-    }
+    console.log(filer)
+    // Where Condition
 
     if (filer.fuel !== "ALL") {
       snapCollection = snapCollection.where("fuel", "==", filer.fuel);
@@ -177,7 +170,35 @@ async function getCarList(filer: Filter, order: string, firestore: ExtendedFires
       snapCollection = snapCollection.where("year", "==", filer.year);
     }
 
-    const snap = await snapCollection.limit(15).get();
+    if (filer.price.max !== 0) {
+      snapCollection = snapCollection.where("price", '>=', filer.price.min).where("price", '<=', filer.price.max).orderBy('price', 'asc')
+    }
+
+    // Order By
+
+    if(filer.price.max === 0) {
+      if(order === 'default') {
+        snapCollection = snapCollection.orderBy('title', 'asc');
+      }
+      
+      if(order === 'most') {
+        snapCollection = snapCollection.orderBy('click', 'desc');
+      }
+  
+      if(order === 'new') {
+        snapCollection = snapCollection.orderBy('created', 'desc');
+      }
+  
+      if(order === 'low') {
+        snapCollection = snapCollection.orderBy('price', 'asc');
+      }
+  
+      if(order === 'hight') {
+        snapCollection = snapCollection.orderBy('price', 'desc');
+      }
+    }
+
+    const snap = await snapCollection.limit(10000).get();
 
     snap.forEach((x: any) => {
       items.push({

@@ -45,14 +45,14 @@ export function ShopBooking(props: Props) {
             <div className="modal-body">
               {
                 book ? <div>Thank you for your booking. <b className="text-danger">WESALECAR</b> will contect you soon. </div> :
-                  <div className="form-group">
-                    <input type="text" name="phone" className="form-control" placeholder="Enter your phonenumber..." required autoFocus />
+                  <div className="ui input fluid">
+                    <input type="text" name="phone" placeholder="Enter your phonenumber..." required autoFocus style={{ padding: 3 }}/>
                   </div>
               }
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => props.onShowChange(false)}>Close</button>
-              {!book && <button type="submit" className="btn btn-primary">Book</button>}
+              <button type="button" className="ui button red" data-dismiss="modal" onClick={() => props.onShowChange(false)}>Close</button>
+              {!book && <button type="submit" className="ui button green">Book</button>}
             </div>
           </div>
         </div>

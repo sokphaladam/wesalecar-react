@@ -28,9 +28,9 @@ export function HeaderComponent() {
           <div className="row">
             <div className="col-md-12">
               <nav className="navbar navbar-expand-lg nav-white nav-primary-hover nav-down-line-active">
-                <a className="navbar-brand" href="#" style={{ width: 135, height: 30 }}>
+                <Link to="/" className="navbar-brand" href="#" style={{ width: 135, height: 30 }}>
                   <img className="nav-logo" src={require('../logowesalecar.png')} alt="Image not found !" />
-                </a>
+                </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon flaticon-menu flat-small text-white">
                     <i className="fas fa-bars mt-1"></i>

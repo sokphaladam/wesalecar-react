@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Content } from '../../components/Content';
 import { useFirebase } from 'react-redux-firebase';
-import { useRouteMatch, Link } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import { ShopBooking } from './components/ShopBooking';
 import { Slider } from './components/Silder';
 import { CardPanel } from './components/CardPanel';
@@ -19,7 +19,6 @@ export function ShopDetailScreen() {
   const match = useRouteMatch();
   const [car, setCar] = useState<any>({});
   const [load, isLoad] = useState(true);
-  const [indexTab, setIndexTab] = useState(0);
   const [model, setModel] = useState(false);
   const user = sessionStorage.getItem('user');
 

@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ShopBooking } from '../screens/Shop/components/ShopBooking';
 
 interface Props {
   data: any;
 }
 
 export function CardCarItem2(props: Props) {
+  const [model, setModel] = useState(false);
   const images = props.data.image === undefined ? props.data.images : props.data.image;
   return (
-    <Link to={'/shop/' + props.data.id} className="card-wesalecar">
+    <div className="card-wesalecar">
+      {
+        model && <ShopBooking onShowChange={v => setModel(v)} value={props.data} />
+      }
       <div className="row">
-        <div className="col-3">
+        <Link to={'/shop/' + props.data.id} className="col-3">
           <img src={images[0]} alt="" style={{ height: 'auto', width: 195, objectFit: 'cover' }} />
-        </div>
+        </Link>
         <div className="col-9">
           <div className="row">
             <div className="col-6">
-              <span className="ui tiny header">{props.data.title}</span>
+              <Link to={'/shop/' + props.data.id} className="ui tiny header">{props.data.title}</Link>
             </div>
             <div className="col-6 text-right">
               <b className="text-success">USD {new Intl.NumberFormat().format(Number(props.data.price))}</b>
@@ -63,11 +68,11 @@ export function CardCarItem2(props: Props) {
               </div>
             </div>
             <div className="col-3 text-right">
-              <button className="ui positive basic button mini">BID NOW</button>
+              <button className="ui positive basic button mini" onClick={() => setModel(true)}>BID NOW</button>
             </div>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
